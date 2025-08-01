@@ -25,17 +25,18 @@ public class Main {
         bw.close();
     }
     
-    public static int hash (int l, String str) {
+    public static long hash (int l, String str) {
         
-        int result = 0;
+        long result = 0;
+        long powR = 1;
         
         for (int i = 0; i < l; i++) {
-            int a = str.charAt(i) - 'a' + 1;
+            long a = str.charAt(i) - 'a' + 1;
             
-            result += a * Math.pow(R, i);
+            result = (result + (a * powR) % M) % M;
+            
+            powR = (powR * R) % M;
         }
-        
-        result %= M;
         
         return result;
     }
