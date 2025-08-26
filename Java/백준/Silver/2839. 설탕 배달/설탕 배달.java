@@ -8,8 +8,6 @@ public class Main {
     
     static int n;
     
-    static int[] bags = {3, 5};
-    
     public static void main(String[] args) throws IOException {
         
         input();
@@ -24,6 +22,8 @@ public class Main {
     }
     
     public static String solve() {
+        
+        int[] bags = {3, 5};
         
         int maxNumOfMaxWeightBags = n / bags[1];
         
