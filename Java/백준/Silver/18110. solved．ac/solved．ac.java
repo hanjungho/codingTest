@@ -1,10 +1,8 @@
 import java.io.*;
 import java.util.*;
-
 public class Main {
     
     static int n;
-
     static int[] opinionArr;
     
     public static void main(String[] args) throws IOException {
@@ -34,9 +32,19 @@ public class Main {
         
         StringBuilder sb = new StringBuilder();
         
+        if (n == 0) {
+            
+            return "0";
+        }
+        
         Arrays.sort(opinionArr);
         
-        int exceptionNum = (int) Math.round(n * 0.15);
+        int exceptionNum = n * 15 / 100;
+        
+        if (n * 15 % 100 >= 50) {
+            
+            exceptionNum++;
+        }
         
         int cnt = 0;
         int sum = 0;
@@ -47,7 +55,12 @@ public class Main {
             sum += opinionArr[i];
         }
         
-        int result = (int) Math.round((double) sum / cnt);
+        int result = sum / cnt;
+        
+        if (sum % cnt >= (double) cnt / 2) {
+            
+            result++;
+        }
         
         sb.append(result);
         
